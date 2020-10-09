@@ -1,7 +1,7 @@
 {
 	"token": "discord bots token goes here",
 	"max_size": 12,
-	"wip_folder": "D:\\Steam\\steamapps\\common\\Beat Saber\\Beat Saber_Data\\CustomWIPLevels2\\",
+	"wip_folder": "D:\\Steam\\steamapps\\common\\Beat Saber\\Beat Saber_Data\\CustomWIPLevels\\",
 	"wip_channel": "wip-levels",
 	"sound_volume": 60
 }
