@@ -90,7 +90,7 @@ function file_downloaded(fname, msg){
 			});
 			if (play_sound*1 > 0){
 				console.log("Play sound");
-				player.play('wip_ready.mp3', {afplay: ['-volume', play_sound ], if (err) throw err}); // there we need to call streamer that map is ready, and he need to reload maps
+				player.play('wip_ready.mp3', {afplay: ['-volume', play_sound ]}, function(err){ if (err) throw err}); // there we need to call streamer that map is ready, and he need to reload maps
 			}
 		});
 	});
