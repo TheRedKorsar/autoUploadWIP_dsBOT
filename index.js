@@ -6,7 +6,7 @@ const player = require('play-sound')(opts = {player: "mplayer"})
 const request = require('request');
 const fs = require('fs');
 const JSZip = require("jszip");
-const play_sound = config.sound;
+const play_sound = config.sound_volume;
 
 const WIP_FOLDER = config.wip_folder; //path to WIP folder
 const max_file = config.max_size; // max file size in MB
@@ -88,11 +88,9 @@ function file_downloaded(fname, msg){
 					console.log("ZIP File deleted!");
 				}
 			});
-			if (play_sound*1 == 1){
+			if (play_sound*1 > 0){
 				console.log("Play sound");
-				player.play('wip_ready.mp3', function(err){ // there we need to call streamer that map is ready, and he need to reload maps
-					if (err) throw err
-				});
+				player.play('wip_ready.mp3', {afplay: ['-volume', play_sound ], if (err) throw err}); // there we need to call streamer that map is ready, and he need to reload maps
 			}
 		});
 	});
