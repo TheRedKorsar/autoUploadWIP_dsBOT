@@ -11,6 +11,8 @@ const play_sound = config.sound_volume;
 const WIP_FOLDER = config.wip_folder; //path to WIP folder
 const max_file = config.max_size; // max file size in MB
 
+const fileReg = /^(con|prn|aux|nul|com[0-9]|lpt[0-9])$|([<>:"\/\\|?*])|(\.|\s)$/ig
+
 function download(url, fname, msg){ // just function of download the zip
 	let ws = fs.createWriteStream(fname)
     let req = request.get(url).on('error', console.error)
@@ -55,6 +57,14 @@ function file_downloaded(fname, msg){
 				msg.reply(`file is incorrect!`);
 				return;
 			}
+
+			if (reg.test(f_name)) { // if filename is invalid, we well throw bot reply
+				msg.reply(`file name is invlid!`);
+				console.log("Filename: " + f_name + " is invlid.");
+				return;
+			}
+
+
 			console.log("File: " + fname + " is correct, unzipping...");
 			// Now we ready to put files to WIP folder
 			if (!fs.existsSync(WIP_FOLDER + f_name)){
